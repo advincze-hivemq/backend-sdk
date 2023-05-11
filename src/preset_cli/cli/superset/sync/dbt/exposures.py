@@ -134,7 +134,8 @@ def sync_exposures(  # pylint: disable=too-many-locals
         dashboard = client.get_dashboard(dashboard_id)
         first_owner = dashboard["owners"][0]
         exposure = {
-            "name": dashboard["dashboard_title"] + " [dashboard]",
+            "name": dashboard_id,
+            "label": dashboard["dashboard_title"] + " [dashboard]",
             "type": "dashboard",
             "maturity": "high"
             if dashboard["published"] or dashboard["certified_by"]
