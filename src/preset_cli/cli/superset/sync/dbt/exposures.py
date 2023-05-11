@@ -30,7 +30,8 @@ def get_chart_depends_on(
     """
     Get all the dbt dependencies for a given chart.
     """
-
+    if chart["query_context"] is None:
+        return []
     query_context = json.loads(chart["query_context"])
     dataset_id = query_context["datasource"]["id"]
     dataset = client.get_dataset(dataset_id)
